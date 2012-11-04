@@ -1,63 +1,36 @@
+# encoding: UTF-8
+
 require_relative 'spec_helper'
 require_relative '../lib/condicionador'
 
 describe Condicionador do
-  describe "reduz_um_grau" do
+  describe "reajusta" do
     before do
-      @condicionador = Condicionador.new(30,20)
+      @condicionador = Condicionador.new(30,27)
     end
     it "deve reduzir a temperatura em 1 grau" do
       temperatura_inicial = @condicionador.temperatura
-      @condicionador.reduz_um_grau
-      @condicionador.temperatura.must_equal (temperatura_inicial - 1)
+      @condicionador.reajusta
+      @condicionador.temperatura.must_equal(temperatura_inicial - 1)
     end
 
-    it "deve aumentar o custo em 0.5 na primeira vez" do
-      @condicionador.reduz_um_grau
-      @condicionador.custo.must_equal 0.6
+    it "deve contabilizar o custo de ligar + custo de uso na primeira vez" do
+      @condicionador.reajusta
+      @condicionador.custo.must_equal Condicionador::CUSTO_LIGAR + Condicionador::CUSTO_USO
     end
 
-    context "em uso" do
+    context "após ligar compressor" do
       before do
-        @condicionador.reduz_um_grau
-        @condicionador.reduz_um_grau
+        @condicionador.reajusta
+        @condicionador.aumenta_temperatura(1)
       end
-      it "deve aumentar o custo em 0.1" do
+      it "deve contabilizar apenas o custo do uso" do
         custo_inicial = @condicionador.custo
-        @condicionador.reduz_um_grau
-        @condicionador.custo.must_equal (custo_inicial + 0.1)
+        @condicionador.reajusta
+        @condicionador.custo.must_equal(custo_inicial + Condicionador::CUSTO_USO)
       end
     end
   end
 
-  describe "refrigera" do
-    context "temperatura inicial 30, final 26.5" do
-      before do
-        @saida = Condicionador.refrigera(30, 26.5)
-      end
-
-      it "deve retornar temperatura 29" do
-        @saida[0].must_equal 28
-      end
-
-      it "deve retornar custo" do
-        @saida[1].must_equal 0.7
-      end
-    end
-
-    context "temperatura inicial 30, final 20" do
-      before do
-        @saida = Condicionador.refrigera(30, 20)
-      end
-
-      it "deve retornar temperatura 29" do
-        @saida[0].must_equal 22
-      end
-
-      it "deve retornar custo" do
-        @saida[1].must_equal 1.3
-      end
-    end
-  end
 
 end

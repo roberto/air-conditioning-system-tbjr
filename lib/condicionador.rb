@@ -1,49 +1,47 @@
 class Condicionador
-  TOLERANCIA = 2
+  TOLERANCIA  = 2
+  CUSTO_LIGAR = 0.5
+  CUSTO_USO   = 0.1
   attr_accessor :temperatura, :custo
 
-  def initialize(temperatura_inicial, temperatura_desejada)
+  def initialize(temperatura_inicial, temperatura_ideal)
     @compressor_ligado = false
     @temperatura = temperatura_inicial
-    @temperatura_desejada = temperatura_desejada + TOLERANCIA
+    @temperatura_tolerada = temperatura_ideal + TOLERANCIA
     @custo = 0.0
   end
 
-  def reduz_um_grau
-    liga_compressor
-    @temperatura -= 1.0
-    incrementa_custo
-  end
-
-  def liga_compressor
-    unless @compressor_ligado
-      incrementa_custo(0.5) 
-      @compressor_ligado = true
-    end
+  def aumenta_temperatura(valor = 1)
+    @temperatura += valor
   end
 
   def reajusta
-    while(temperatura > @temperatura_desejada)
-      reduz_um_grau
+    while(@temperatura > @temperatura_tolerada)
+      prepara_compressor
+      diminui_temperatura
+      registra_uso
     end
-  end
-
-  #TODO passar para Simulador
-  def self.refrigera(temperatura_atual, temperatura_desejada, minutos = 0, variacao = 0)
-  condicionador = Condicionador.new(temperatura_atual, temperatura_desejada)
-
-  condicionador.reajusta
-  minutos.times do
-    condicionador.temperatura += variacao
-    condicionador.reajusta
-  end
-  [condicionador.temperatura, condicionador.custo.round(2)]
   end
 
   private
 
-  def incrementa_custo(valor = 0.1)
-    @custo += valor
+  def prepara_compressor
+    unless @compressor_ligado
+      registra_compressor
+      @compressor_ligado = true
+    end
+  end
+
+  def registra_compressor
+    @custo += CUSTO_LIGAR
+  end
+
+  def registra_uso
+    @custo += CUSTO_USO
+  end
+
+  def diminui_temperatura(valor = 1)
+    @temperatura -= valor
   end
 
 end
