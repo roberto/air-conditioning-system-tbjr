@@ -10,7 +10,7 @@ describe ACME::ArCondicionado do
     before do
       @nova_temperatura = 20
       @novo_custo = 10
-      @regulador.expect :refrigera, [@nova_temperatura, @novo_custo], [Numeric, Numeric]
+      @regulador.expect :refrigera, [@nova_temperatura, @novo_custo], [25, 20]
     end
 
     it "deve chamar refrigera com a temperatura inicial e ideal declaradas" do
