@@ -13,9 +13,9 @@ class ReguladorMock
   end
 end
 
-describe ACME::ArCondicionadoSimulador do
+describe ACME::Simulador do
   let(:regulador) { ReguladorMock.new }
-  let(:simulador) { ACME::ArCondicionadoSimulador.new(regulador) }
+  let(:simulador) { ACME::Simulador.new(regulador) }
 
   describe "executa" do
     before do

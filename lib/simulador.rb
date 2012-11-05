@@ -1,5 +1,5 @@
 module ACME
-  class ArCondicionadoSimulador
+  class Simulador
     MINUTOS = 360
     VARIACAO_TEMPERATURA = 0.5
     TEMPERATURA_INICIAL = 30

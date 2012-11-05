@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/acme'
-puts ACME::ArCondicionadoSimulador.new.executa
+puts ACME::Simulador.new.executa
