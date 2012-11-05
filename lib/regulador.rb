@@ -6,10 +6,6 @@ module ACME
     CUSTO_USO   = 0.1
     CUSTO_LIGAR = 0.5
 
-    def initialize
-      @hardware = Hardware.new
-    end
-
     # "A função que você precisa implementar deverá ter o seguinte modelo:
     # refrigera(temp_atual, temp_desejada, ...)"
     def refrigera(temperatura, temperatura_ideal)
