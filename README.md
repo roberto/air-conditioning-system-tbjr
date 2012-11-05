@@ -40,3 +40,5 @@ Então criei `Hardware::reduz_um_grau` apenas para simular o Hardware que supost
 Já `Simulador` faz o papel do Ar Condicionado chamando `#refrigera` com os parametros corretos (temperatura atual e temperatura desejada), durante o tempo estabelecido, enquanto aumenta a temperatura.
 
 > Os argumentos temp_atual e temp_desejada serão passados pra você pelo ar-condicionado.
+
+Solução em português, enquanto no outro está em inglês, pois nesse foi solicitado alguns métodos em pt_BR.
