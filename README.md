@@ -5,7 +5,7 @@ Sistema de controle de condicionador de ar da ACME.
 Para executar a simulação:
 
 ```
-git clone git@github.com:roberto/air-conditioning-system-tbjr.git
+git clone git://github.com/roberto/air-conditioning-system-tbjr.git
 cd air-conditioning-system-tbjr
 ./configure
 make
