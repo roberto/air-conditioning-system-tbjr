@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module ACME
   class Regulador
     TOLERANCIA  = 2.0
