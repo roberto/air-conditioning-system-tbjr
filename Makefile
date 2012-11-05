@@ -1,2 +1,2 @@
 all:
-	ruby bin/simulacao.rb
+	./bin/simulacao
