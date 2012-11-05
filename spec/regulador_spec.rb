@@ -25,12 +25,12 @@ describe ACME::Regulador do
       before do
         @temperatura_final, @custo = @regulador.refrigera(32.5,30)
       end
-      it "deve diminuir um grau" do
-        @temperatura_final.must_be_close_to 31.5
+      it "deve diminuir 4 graus" do
+        @temperatura_final.must_be_close_to 28.5
       end
 
-      it "custo total deve ser 0.6(compressor + 1 uso)" do
-        @custo.must_be_close_to 0.6
+      it "custo total deve ser 0.9(compressor + 4 usos)" do
+        @custo.must_be_close_to 0.9
       end
     end
 
@@ -38,12 +38,12 @@ describe ACME::Regulador do
       before do
         @temperatura_final, @custo = @regulador.refrigera(52.5,40)
       end
-      it "deve diminuir 10 graus" do
-        @temperatura_final.must_be_close_to 41.5
+      it "deve diminuir 14 graus" do
+        @temperatura_final.must_be_close_to 38.5
       end
 
       it "custo total deve ser 1.6(compressor +  11 usos)" do
-        @custo.must_be_close_to 1.6
+        @custo.must_be_close_to 1.9
       end
     end
 
@@ -51,12 +51,12 @@ describe ACME::Regulador do
       before do
         @temperatura_final, @custo = @regulador.refrigera(30,20)
       end
-      it "deve diminuir um grau" do
-        @temperatura_final.must_be_close_to 22
+      it "deve diminuir 12 graus" do
+        @temperatura_final.must_be_close_to 18
       end
 
-      it "custo total deve ser 1.3(compressor + 8 usos)" do
-        @custo.must_be_close_to 1.3
+      it "custo total deve ser 1.7(compressor + 12 usos)" do
+        @custo.must_be_close_to 1.7
       end
     end
   end
