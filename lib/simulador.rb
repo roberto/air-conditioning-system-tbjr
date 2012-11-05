@@ -23,7 +23,8 @@ module ACME
 
 
     private
-
+    
+    # "Os argumentos temp_atual e temp_desejada serão passados pra você pelo ar-condicionado."
     def regula_temperatura
       nova_temperatura, custo = @regulador.refrigera(@temperatura, TEMPERATURA_IDEAL)
       @temperatura = nova_temperatura
