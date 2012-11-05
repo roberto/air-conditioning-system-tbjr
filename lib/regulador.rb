@@ -15,30 +15,22 @@ module ACME
     def refrigera(temperatura, temperatura_ideal)
       custo = 0.0
 
-      if temperatura > maxima_aceitavel(temperatura_ideal) 
+      maxima_aceitavel = temperatura_ideal + TOLERANCIA
+      minima_aceitavel = temperatura_ideal - TOLERANCIA
+
+      if temperatura > maxima_aceitavel
         custo += CUSTO_LIGAR
 
         begin
           Hardware.reduz_um_grau
           temperatura -= 1
           custo += CUSTO_USO
-        end while (temperatura >= minima_aceitavel(temperatura_ideal) + 1)
+        end while (temperatura >= minima_aceitavel + 1)
       end
 
       # "A sua função deve ainda retornar uma tupla com
       # a temperatura final e o custo da redução de temperatura."
       [temperatura, custo]
     end
-
-    private
-    
-    def minima_aceitavel(temperatura_ideal)
-      @_minima_aceitavel ||= temperatura_ideal - TOLERANCIA
-    end
-
-    def maxima_aceitavel(temperatura_ideal)
-      @_maxima_aceitavel ||= temperatura_ideal + TOLERANCIA
-    end
-
   end
 end
