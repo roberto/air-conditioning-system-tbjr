@@ -6,6 +6,7 @@ if ENV['coverage'] == 'ON'
 end
 
 require 'minitest/autorun'
+require_relative '../lib/acme'
 
 module MiniTest
   class Spec
