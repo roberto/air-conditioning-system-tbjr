@@ -2,13 +2,27 @@
 
 Sistema de controle de condicionador de ar da ACME.
 
-Para executar simulação:
+Para executar a simulação:
 
-* `./configure` (nada faz)
-* `make` (executa `ruby bin/simulacao.rb`)
+```
+git clone git@github.com:roberto/air-conditioning-system-tbjr.git
+cd air-conditioning-system-tbjr
+./configure
+make
+```
 
+Após isso, para rodar os testes:
 
-Para rodar os testes:
+```
+bundle install
+bundle exec rake
+```
 
-* `gem install rake`
-* `rake`
+Utilize `bundle install --without mac` caso não esteja utilizando MacOSX.
+
+Para cobertura de testes:
+
+```
+coverage=ON bundle exec rake
+open coverage/index.html
+```

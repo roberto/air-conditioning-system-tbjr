@@ -2,6 +2,7 @@ if ENV['coverage'] == 'ON'
   require 'simplecov'
   SimpleCov.start do
     add_filter "/spec/"
+    command_name 'MiniTest'
   end
 end
 
