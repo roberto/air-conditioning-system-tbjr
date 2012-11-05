@@ -17,7 +17,7 @@ module ACME
       calor = temperatura_inicial.ceil - temperatura_tolerada.ceil
 
       if calor > 0
-        custo += CUSTO_LIGAR if prepara_compressor
+        custo += CUSTO_LIGAR
 
         calor.times do
           Hardware.reduz_um_grau
@@ -32,12 +32,6 @@ module ACME
       # "A sua função deve ainda retornar uma tupla com
       # a temperatura final e o custo da redução de temperatura."
       [nova_temperatura, custo]
-    end
-
-    private
-
-    def prepara_compressor
-      @compressor_ligado = true unless @compressor_ligado
     end
 
   end
